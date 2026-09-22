@@ -1,0 +1,1 @@
+# Security Policy\n\nNever commit secrets, credentials, personal data, production configurations, or unsafe exploit payloads. Report vulnerabilities privately through GitHub security mechanisms.\n
