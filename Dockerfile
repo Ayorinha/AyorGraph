@@ -1,0 +1,1 @@
+FROM python:3.12-slim\nENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1\nWORKDIR /app\nCOPY pyproject.toml ./\nCOPY src ./src\nRUN pip install --no-cache-dir .\nCMD ["python","-c","print('container ready')"]\n
