@@ -1,0 +1,1 @@
+# Roadmap\n\n- [x] Typed core foundation\n- [x] Unit-test foundation\n- [x] CI and dependency security workflow\n- [ ] Production adapters\n- [ ] Integration and performance benchmarks\n- [ ] Versioned releases\n
