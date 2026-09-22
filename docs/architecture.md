@@ -1,0 +1,1 @@
+# AyorGraph Architecture\n\nThe system separates deterministic core logic from external adapters. Integrations should sit behind typed interfaces. Security-sensitive decisions must be explicit, auditable, and fail closed.\n
