@@ -17,3 +17,7 @@ Engineering foundation — actively developed under **AYORAI · Applied Intellig
 ## Roadmap
 
 See `docs/roadmap.md` for the implementation plan.
+
+## Engineering Evolution
+
+This repository follows the AYORAI engineering continuity model: implementation, tests, quality gates, security, observability, performance, integration, production engineering, DevSecOps, documentation, research/evaluation, and governance. A capability is considered complete only when implementation evidence, automated tests, validation evidence, documentation, and CI evidence exist.
