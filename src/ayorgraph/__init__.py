@@ -1,1 +1,2 @@
-"""AyorGraph public package."""\nfrom .core import *\n
+"""AyorGraph public API."""
+from .core import AgentGraph
