@@ -1,0 +1,1 @@
+__pycache__/\n.pytest_cache/\n.ruff_cache/\n.venv/\ndist/\nbuild/\n*.egg-info/\n.env\n
