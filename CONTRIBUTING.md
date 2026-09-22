@@ -1,0 +1,1 @@
+# Contributing\n\nUse focused feature, fix, docs, or security branches. Every PR should include tests, lint, security checks, and documentation updates when behavior changes.\n
