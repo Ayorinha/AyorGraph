@@ -21,15 +21,22 @@ def test_run_traced_rejects_unknown_node():
         run_traced({"a": lambda x: x + 1}, 1, ["missing"])
 
 
-def test_run_traced_records_error_before_reraising():
-    nodes = {"a": lambda x: 1 / 0}
+def test_run_traced_stops_after_error():
+    calls = []
+
+    def fail(value):
+        calls.append("fail")
+        raise RuntimeError("boom")
+
+    def should_not_run(value):
+        calls.append("unexpected")
+        return value
 
     try:
-        run_traced(nodes, 0, ["a"])
-    except ZeroDivisionError:
+        run_traced({"fail": fail, "after": should_not_run}, 0, ["fail", "after"])
+    except RuntimeError:
         pass
     else:
         raise AssertionError("expected failure")
 
-    # The public result is not returned on failure, so the behavior is
-    # asserted through the existing exception contract above.
+    assert calls == ["fail"]
