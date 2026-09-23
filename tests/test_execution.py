@@ -12,3 +12,31 @@ def test_run_traced_records_failure():
         pass
     else:
         raise AssertionError("expected failure")
+
+
+def test_run_traced_rejects_unknown_node():
+    import pytest
+
+    with pytest.raises(KeyError):
+        run_traced({"a": lambda x: x + 1}, 1, ["missing"])
+
+
+def test_run_traced_stops_after_error():
+    calls = []
+
+    def fail(value):
+        calls.append("fail")
+        raise RuntimeError("boom")
+
+    def should_not_run(value):
+        calls.append("unexpected")
+        return value
+
+    try:
+        run_traced({"fail": fail, "after": should_not_run}, 0, ["fail", "after"])
+    except RuntimeError:
+        pass
+    else:
+        raise AssertionError("expected failure")
+
+    assert calls == ["fail"]
