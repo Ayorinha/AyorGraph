@@ -33,6 +33,80 @@ Input → Agent A → Agent B / Tool → Validation → Output
 
 The architecture is intentionally explicit: the graph is a first-class representation of the workflow.
 
+## Getting Started
+
+AyorGraph requires Python 3.11 or newer.
+
+### Install from source
+
+```bash
+git clone https://github.com/Ayorinha/AyorGraph.git
+cd AyorGraph
+python -m venv .venv
+```
+
+Activate the virtual environment, then install the package and the test runner:
+
+```bash
+# Linux/macOS
+source .venv/bin/activate
+
+# Windows PowerShell
+# .venv\Scripts\Activate.ps1
+
+python -m pip install -e .
+python -m pip install pytest
+```
+
+### Build and run a first graph
+
+```python
+from ayorgraph.core import Graph, State
+
+
+def add_input(state: State) -> State:
+    return State({**state.values, "input": 2})
+
+
+def double(state: State) -> State:
+    return State({**state.values, "output": state.values["input"] * 2})
+
+
+graph = Graph().node("input", add_input).node("double", double)
+result = graph.run(State(), ["input", "double"])
+
+print(result.values)
+# {"input": 2, "output": 4}
+```
+
+Nodes receive a `State` and return a new `State`. The list passed to
+`Graph.run()` defines the execution order, and an unknown node name raises
+`KeyError`.
+
+### Run the tests
+
+From the repository root:
+
+```bash
+python -m pytest -q
+```
+
+The current suite covers graph execution, duplicate-node validation, traced
+execution, pipeline behavior, and package smoke checks.
+
+### Contribute a change
+
+Before starting, choose an open issue and read
+[CONTRIBUTING.md](CONTRIBUTING.md). The normal flow is:
+
+```text
+Issue → Fork → Branch → Implement → Test → Pull Request → CI → Review → Merge
+```
+
+Keep the diff focused, add or update tests for behavior changes, run
+`python -m pytest -q`, and explain the validation performed in the pull
+request.
+
 ## Current Engineering Focus
 
 AyorGraph is actively evolving. Current contribution areas include:
