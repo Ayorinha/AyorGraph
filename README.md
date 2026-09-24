@@ -49,6 +49,25 @@ AyorGraph is actively evolving. Current contribution areas include:
 
 See the repository Issues for concrete tasks that can be picked up by contributors.
 
+## Local tracing example
+
+```bash
+pip install -e .
+python examples/execution_tracing.py
+```
+
+This deterministic text pipeline normalizes a fixed input and counts its three
+words. Each node emits `started` and `completed` events to an in-memory list,
+including its outcome and elapsed seconds measured with `time.perf_counter`.
+Durations vary between runs; the node order and final state do not. No model,
+credentials or telemetry provider is needed.
+
+The wrapper also records the exception type and duration when a node fails, then
+re-raises the original exception. Keep the event list to inspect failed runs.
+The example supplements `run_traced` locally; it does not change the library's
+event schema or provide a production telemetry backend. Tests inject a clock to
+check exact durations without sleeps.
+
 ## Contributing
 
 **You don't need to build the whole framework to contribute.**
