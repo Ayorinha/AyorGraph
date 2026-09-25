@@ -126,6 +126,10 @@ AyorGraph is released under the [MIT License](LICENSE).
 
 ---
 
+## Current Status
+
+The repository is maintained as a focused engineering foundation for explicit agent orchestration, validation, tracing and safe execution. CI is configured for pushes to `main` and pull requests targeting `main`.
+
 **AyorGraph · AYORAI · Applied Intelligence**
 
 Built by **Anderson Leon Ayora**
