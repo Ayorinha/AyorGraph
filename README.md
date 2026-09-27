@@ -68,6 +68,20 @@ The example supplements `run_traced` locally; it does not change the library's
 event schema or provide a production telemetry backend. Tests inject a clock to
 check exact durations without sleeps.
 
+## Multi-agent example
+
+A minimal two-agent workflow is available without any model credentials:
+
+```bash
+pip install -e .
+python examples/multi_agent.py
+```
+
+The first node acts as a deterministic research agent and writes facts into
+`State`. The second node consumes those facts and writes the final response.
+The example uses the normal `Graph` execution path, so the hand-off between
+the two agents is explicit and covered by a regression test.
+
 ## Contributing
 
 **You don't need to build the whole framework to contribute.**
