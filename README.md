@@ -25,6 +25,21 @@ AyorGraph explores a practical foundation for:
 
 ## Architecture
 
+~~~mermaid
+flowchart LR
+    I[Input] --> A[Agent A]
+    I --> B[Agent B / Tool]
+    A --> V[Validation]
+    B --> V
+    V --> X[Execution]
+    X --> O[Output]
+    X --> T[Trace / Events]
+    T --> O
+~~~
+
+> **Engineering boundary:** graph structure makes agent relationships, validation and execution paths explicit and observable.
+
+
 A typical workflow can be represented conceptually:
 
 ```text
