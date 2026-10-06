@@ -25,6 +25,21 @@ AyorGraph explores a practical foundation for:
 
 ## Architecture
 
+~~~mermaid
+flowchart LR
+    I[Input] --> A[Agent A]
+    I --> B[Agent B / Tool]
+    A --> V[Validation]
+    B --> V
+    V --> X[Execution]
+    X --> O[Output]
+    X --> T[Trace / Events]
+    T --> O
+~~~
+
+> **Engineering boundary:** graph structure makes agent relationships, validation and execution paths explicit and observable.
+
+
 A typical workflow can be represented conceptually:
 
 ```text
@@ -199,6 +214,10 @@ The project favors explicit contracts, reproducible behavior, automated testing,
 AyorGraph is released under the [MIT License](LICENSE).
 
 ---
+
+## Current Status
+
+The repository is maintained as a focused engineering foundation for explicit agent orchestration, validation, tracing and safe execution. CI is configured for pushes to `main` and pull requests targeting `main`.
 
 **AyorGraph · AYORAI · Applied Intelligence**
 
