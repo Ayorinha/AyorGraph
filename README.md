@@ -171,6 +171,21 @@ The first node acts as a deterministic research agent and writes facts into
 The example uses the normal `Graph` execution path, so the hand-off between
 the two agents is explicit and covered by a regression test.
 
+## Performance fixture
+
+For a small repeatable construction/execution measurement:
+
+```bash
+pip install -e .
+python examples/performance_fixture.py
+```
+
+The fixture reports graph construction and execution time separately for a fixed
+number of one-node graphs. It intentionally has no pass/fail timing threshold
+and makes no production-performance claim; compare runs under the same
+environment when investigating regressions.
+
+
 ## Contributing
 
 **You don't need to build the whole framework to contribute.**
